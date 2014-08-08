@@ -3,6 +3,7 @@ __author__ = 'jenriqueps'
 from bs4 import BeautifulSoup
 import urllib2
 
+
 link = "http://cinerama.com.pe"
 def cine_url(url=link):
     soup = BeautifulSoup(urllib2.urlopen(url))
