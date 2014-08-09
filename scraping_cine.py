@@ -2,6 +2,7 @@
 __author__ = 'jenriqueps'
 from bs4 import BeautifulSoup
 import urllib2
+import textwrap
 
 
 link = "http://cinerama.com.pe"
@@ -77,8 +78,12 @@ print(soup.title.string)
 
 busca_horario = soup.find(attrs={'class': 'det-cine'})  # <div class='det-cine'>
 todo_horario = busca_horario.findAll('div', 'programa')
-hora_peli = busca_horario.findAll('div', 'programa-des')
 dias_texto = []
+
+titulo_peli_texto = busca_horario.find('p', 'dtit')
+direccion_cine_texto = busca_horario.find('div', 'dtitdire')
+print titulo_peli_texto.text
+print direccion_cine_texto.find('p').text
 
 
 def dias():
@@ -99,6 +104,13 @@ def horario():
         print("")
 
 
+def wrapeando():
+    contenido_texto_wrapeado = textwrap.wrap(contenido_texto,80)
+    print("="*80)
+    for lineas in contenido_texto_wrapeado:
+        print(lineas)
+    print("="*80)
+
 for texto in todo_horario:
     """Buscado titulo, sinopsis, horarios y mas sobre la pelicula"""
     titulo_texto = texto.find('p', 'ptit').text
@@ -106,8 +118,8 @@ for texto in todo_horario:
     dias_texto += texto.find_all('td', 'tt', limit=7)
     horario_texto = texto.find_all('tr')
     print(titulo_texto)
-    print(contenido_texto)
+    wrapeando()
     dias()
     print("")
     horario()
-    print("")
+    print("="*80)
