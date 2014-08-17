@@ -28,6 +28,7 @@ def link_go(diccionario, lista):
     print("Visitando: {}".format(click_url))
     return click_url
 
+
 #=============barra de navegacion ==================
 """Cometando esta para despues completarla"""
 """soup = cine_url()
@@ -105,11 +106,13 @@ def horario():
 
 
 def wrapeando():
-    contenido_texto_wrapeado = textwrap.wrap(contenido_texto,80)
+    """ordenando como se muestra el texto"""
+    contenido_texto_wrapeado = textwrap.wrap(contenido_texto, 80)
     print("="*80)
     for lineas in contenido_texto_wrapeado:
         print(lineas)
     print("="*80)
+
 
 for texto in todo_horario:
     """Buscado titulo, sinopsis, horarios y mas sobre la pelicula"""
