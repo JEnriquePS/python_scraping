@@ -1,1 +1,4 @@
 venv
+*.pyc
+uni.py
+venv_scraping

@@ -78,17 +78,19 @@ soup = cine_url(click_urls_ciudades)
 print(soup.title.string)
 
 busca_horario = soup.find(attrs={'class': 'det-cine'})  # <div class='det-cine'>
-todo_horario = busca_horario.findAll('div', 'programa')
+#obterner todo los contenido de la etiqueta div con class= 'programa'
+todo_horario = busca_horario.findAll('div', 'programa') 
+
 dias_texto = []
 
 titulo_peli_texto = busca_horario.find('p', 'dtit')
-direccion_cine_texto = busca_horario.find('div', 'dtitdire')
+#direccion_cine_texto = busca_horario.find('div', 'dtitdire')
 print titulo_peli_texto.text
-print direccion_cine_texto.find('p').text
+#print direccion_cine_texto.find('p').text
 
 
 def dias():
-    """Imprimiendo los dias """
+    """Imprimiendo los dias de la semana si se encuentran? en el horario """
     n = 0
     for dia in dias_texto:
         print(dia.text),
@@ -98,8 +100,9 @@ def dias():
 
 
 def horario():
-    """Imprime los horarios"""
-    for hora in horario_texto[1:]:
+    """Imprime los horas de estreno"""
+    for hora in horario_texto:
+        #print hora.text
         for time in hora:
             print(time.text+"/|\\"),
         print("")
@@ -119,10 +122,10 @@ for texto in todo_horario:
     titulo_texto = texto.find('p', 'ptit').text
     contenido_texto = texto.find('p', 'dpel').text
     dias_texto += texto.find_all('td', 'tt', limit=7)
-    horario_texto = texto.find_all('tr')
+    horario_texto = texto.find_all('tr', limit=2)
     print(titulo_texto)
     wrapeando()
-    dias()
+    #dias()
     print("")
     horario()
     print("="*80)
