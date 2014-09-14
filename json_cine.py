@@ -2,6 +2,7 @@
 __author__ = 'jenriqueps'
 import urllib2
 import json
+import simplejson
 
 
 #html = urllib2.urlopen("http://cinerama.com.pe")
